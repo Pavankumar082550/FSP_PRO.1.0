@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Storage</title>
+</head>
+
+<body>
+    <h1>Session Storage Example</h1>
+    <input type="text" id="username" placeholder="Enter Username">
+    <br><br>
+    <input type="password" id="password" placeholder="Enter Password">
+    <br><br>
+    <button onclick="login()">Save Data</button>
+    <button onclick="showData()">Show Session Data</button>
+    <button onclick="logout()">logout</button>
+    <p id="message"></p>
+    <script>
+         function login()
+         {
+         var username = document.getElementById("username").value;
+         var password = document.getElementById("password").value;
+         if (username == "pavan" && password == "1234")
+            {
+                sessionStorage.setItem("username", username);
+                document.getElementById("message").innerText =
+                    "Login Successful! Welcome " + username;
+            }
+            else
+            {
+                document.getElementById("message").innerText =
+                    "Invalid Username or Password";
+            }
+         }
+
+            // SHOW DATA
+function showData()
+{
+    var username = sessionStorage.getItem("username");
+    var password = document.getElementById("password");
+    if (username) 
+    {
+        document.getElementById("message").innerText = "Session data found for user: " + username;
+    } 
+    else 
+    {
+        document.getElementById("message").innerText = "No session data found.";
+    }
+}
+         
+ 
+    // LOGOUT
+function logout ()
+{
+    var username = sessionStorage.removeItem("username");
+    var password = document.getElementById("password"); 
+    {
+        document.getElementById("message").innerText = "You have been logged out successfully.";
+    }
+}
+
+     </script>
