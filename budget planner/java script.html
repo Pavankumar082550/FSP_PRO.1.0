@@ -1,0 +1,15 @@
+let income = 0;
+let expenses = [];
+
+function addIncome() {
+    income = Number(document.getElementById("income").value);
+    updateDashboard();
+}
+
+function updateDashboard() {
+    let totalExpense = expenses.reduce((sum, e) => sum + e.amount, 0);
+    let balance = income - totalExpense;
+
+    document.getElementById("balance").innerText =
+        balance.toFixed(2);
+}
